@@ -59,7 +59,7 @@ Vagrant.configure("2") do |config|
       minion.trigger.after ["up", "provision", "reload"] do |tu|
         tu.name = "accept keys"
         tu.info = "accept minion key on master"
-        tu.run = {inline: "vagrant ssh master -- sudo /usr/bin/salt-key -y -a #{vmname}"}
+        tu.run = {inline: "vagrant ssh master -- sudo /usr/bin/salt-key -y -A"}
       end
 
       minion.trigger.after "destroy" do |tu|
