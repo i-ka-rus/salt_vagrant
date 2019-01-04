@@ -23,8 +23,8 @@ Vagrant.configure("2") do |config|
     master.vm.box = "#{os}"
     master.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh"
     master.vm.network "private_network", ip: "#{network}.10"
-    master.vm.synced_folder "saltstack/pillar/", "/src/pillar"
-    master.vm.synced_folder "saltstack/salt/", "/src/salt"
+    master.vm.synced_folder "saltstack/pillar/", "/srv/pillar/"
+    master.vm.synced_folder "saltstack/salt/", "/srv/salt/"
     master.vm.provision "salt" do |salt|
       salt.install_type = "stable"
       salt.install_master = true
